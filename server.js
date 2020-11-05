@@ -10,6 +10,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 
+// Routes
+app.use('/api/routes/users', require('./api/routes/users'))
+
 // connection
 const knex = require("./connection")
 
