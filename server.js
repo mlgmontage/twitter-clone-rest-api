@@ -8,8 +8,12 @@ app.use(volleyball)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+// connection
+const knex = require("./connection")
+
 // Routes
 app.get('/', async (req, res) => {
+  knex("Users").then(data => console.log(data))
   res.json({
     hello: "world"
   })
