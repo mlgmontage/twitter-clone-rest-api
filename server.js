@@ -5,6 +5,8 @@ const volleyball = require("volleyball")
 
 // Middlewares
 app.use(volleyball)
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 // Routes
 app.get('/', (req, res) => {
