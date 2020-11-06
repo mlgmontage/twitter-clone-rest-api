@@ -13,6 +13,7 @@ app.use(cors())
 // Routes
 app.use('/api/routes/users', require('./api/routes/users'))
 app.use('/api/routes/tweets', require('./api/routes/tweets'))
+app.use('/api/routes/comments', require('./api/routes/comments'))
 
 // connection
 const knex = require("./connection")
