@@ -6,7 +6,7 @@ const tweetSchema = require('../schemas/tweet')
 router.get('/', async (req, res) => {
   const tweets = await knex("Tweets")
     .join('Users', 'Tweets.UserId', '=', 'Users.UserId')
-    .select('Tweets.TweetId', 'Tweets.Tweet', 'Users.name', 'Users.lastname', 'Users.login')
+    .select('Tweets.TweetId', 'Tweets.Tweet', 'Users.name', 'Users.lastname', 'Users.login', 'Users.UserId')
     .orderBy('Tweets.TweetId', 'desc');
 
   res.json(tweets)
@@ -26,7 +26,7 @@ router.get('/user/:userid', async (req, res) => {
   const userid = req.params.userid
   const tweet = await knex("Tweets")
     .join('Users', 'Tweets.UserId', '=', 'Users.UserId')
-    .select('Tweets.TweetId', 'Tweets.Tweet', 'Users.name', 'Users.lastname', 'Users.login')
+    .select('Tweets.TweetId', 'Tweets.Tweet', 'Users.UserId', 'Users.name', 'Users.lastname', 'Users.login')
     .where('Tweets.UserId', '=', userid)
 
   res.json(tweet)
