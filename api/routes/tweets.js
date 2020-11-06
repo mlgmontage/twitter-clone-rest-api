@@ -4,7 +4,7 @@ const knex = require("../../connection")
 const tweetSchema = require('../schemas/tweet')
 
 router.get('/', async (req, res) => {
-  const tweets = await knex("Tweets").join('Users', 'Tweets.UserId', '=', 'Users.UserId').select('Tweets.TweetId', 'Tweets.Tweet', 'Users.name', 'Users.lastname')
+  const tweets = await knex("Tweets").join('Users', 'Tweets.UserId', '=', 'Users.UserId').select('Tweets.TweetId', 'Tweets.Tweet', 'Users.name', 'Users.lastname', 'Users.login')
   res.json(tweets)
 })
 
