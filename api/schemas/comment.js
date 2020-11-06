@@ -1,8 +1,8 @@
 const Joi = require("joi")
 
 const schema = Joi.object({
-  UserId: Joi.required(),
-  Tweet: Joi.string().min(1).required()
+  TweetId: Joi.required(),
+  Comment: Joi.string().min(1).required()
 })
 
 module.exports = schema
