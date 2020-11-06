@@ -12,6 +12,16 @@ router.get('/', async (req, res) => {
   res.json(tweets)
 })
 
+router.get('/:id', async (req, res) => {
+  const id = req.params.id
+  const tweet = await knex("Tweets")
+    .join('Users', 'Tweets.UserId', '=', 'Users.UserId')
+    .select('Tweets.TweetId', 'Tweets.Tweet', 'Users.name', 'Users.lastname', 'Users.login')
+    .where('Tweets.TweetId', '=', id)
+
+  res.json(tweet)
+})
+
 router.post('/create', async (req, res) => {
   const body = req.body
 
