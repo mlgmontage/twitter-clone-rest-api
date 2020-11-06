@@ -4,7 +4,7 @@ const knex = require("../../connection")
 
 router.get('/:id', async (req, res) => {
   const id = req.params.id
-  const comments = await knex("Comments").where('TweetId', '=', id)
+  const comments = await knex("Comments").join("Users", "Users.UserId", "=", "Comments.UserId").where('TweetId', '=', id)
   res.json(comments)
 })
 
