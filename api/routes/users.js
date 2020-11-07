@@ -19,4 +19,17 @@ router.post('/register', async (req, res) => {
   }
 })
 
+router.post('/login', async (req, res) => {
+  const body = req.body
+  const login = await knex("Users").where("login", '=', body.login)
+
+  if(login.length > 0 && body.password == login[0].password) {
+    res.json(login)
+  } else {
+    res.json({
+      message: "Auth error"
+    })
+  }
+})
+
 module.exports = router
