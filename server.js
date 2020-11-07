@@ -1,34 +1,41 @@
-const express = require("express")
-const app = express()
-const port = process.env.PORT || 8080
-const volleyball = require("volleyball")
-const cors = require("cors")
-const dotenv = require("dotenv")
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 8080;
+const volleyball = require("volleyball");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const authMiddleware = require("./middlewares/auth");
 
-dotenv.config()
+dotenv.config();
 
 // Middlewares
-app.use(volleyball)
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(volleyball);
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // Routes
-app.use('/api/routes/users', require('./api/routes/users'))
-app.use('/api/routes/tweets', require('./api/routes/tweets'))
-app.use('/api/routes/comments', require('./api/routes/comments'))
+app.use("/api/routes/users", require("./api/routes/users"));
+
+// Protected routes
+app.use("/api/routes/tweets", authMiddleware, require("./api/routes/tweets"));
+app.use(
+  "/api/routes/comments",
+  authMiddleware,
+  require("./api/routes/comments")
+);
 
 // connection
-const knex = require("./connection")
+const knex = require("./connection");
 
 // Routes
-app.get('/', async (req, res) => {
-  knex("Users").then(data => console.log(data))
+app.get("/", async (req, res) => {
+  knex("Users").then((data) => console.log(data));
   res.json({
-    hello: "world"
-  })
-})
+    hello: "world",
+  });
+});
 
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`)
-})
+  console.log(`Server listening on port ${port}`);
+});
