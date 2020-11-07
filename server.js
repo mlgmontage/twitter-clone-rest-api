@@ -3,6 +3,9 @@ const app = express()
 const port = process.env.PORT || 8080
 const volleyball = require("volleyball")
 const cors = require("cors")
+const dotenv = require("dotenv")
+
+dotenv.config()
 
 // Middlewares
 app.use(volleyball)
