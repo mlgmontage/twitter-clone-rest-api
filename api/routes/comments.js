@@ -3,8 +3,8 @@ const router = express.Router();
 const knex = require("../../connection");
 const commentSchema = require("../schemas/comment");
 
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
+router.get("/:tweetid", async (req, res) => {
+  const id = req.params.tweetid;
   const comments = await knex("Comments")
     .join("Users", "Users.UserId", "=", "Comments.UserId")
     .where("TweetId", "=", id);
