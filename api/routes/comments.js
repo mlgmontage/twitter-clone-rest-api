@@ -3,6 +3,7 @@ const router = express.Router();
 const knex = require("../../connection");
 const commentSchema = require("../schemas/comment");
 
+// Comment of individual tweet
 router.get("/:tweetid", async (req, res) => {
   const id = req.params.tweetid;
   const comments = await knex("Comments")
@@ -11,6 +12,7 @@ router.get("/:tweetid", async (req, res) => {
   res.json(comments);
 });
 
+// Create comment
 router.post("/create", async (req, res) => {
   const body = req.body;
   body.UserId = req.user.UserId;

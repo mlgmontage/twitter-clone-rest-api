@@ -15,7 +15,8 @@
 #### Tweets
 
 - `GET: /api/routes/tweets` - list of tweets
-- `GET: /api/routes/tweets/{userid}` - list of tweets that created by user
+- `GET: /api/routes/tweets/{id}` - individual tweet
+- `GET: /api/routes/tweets/user/{userid}` - list of tweets that created by user
 - `POST: /api/routes/tweets/create` - create tweet
 
 #### Comments
@@ -27,4 +28,4 @@
 
 - `GET: /api/routes/users/` - list of users
 - `POST: /api/routes/users/login` - login
-- `POST: /api/routes/users/registee` - register
+- `POST: /api/routes/users/register` - register

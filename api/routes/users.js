@@ -4,11 +4,13 @@ const router = express.Router();
 const knex = require("../../connection");
 const registerSchema = require("../schemas/register");
 
+// List of users
 router.get("/", async (req, res) => {
   const users = await knex("Users");
   res.json(users);
 });
 
+// Register user
 router.post("/register", async (req, res) => {
   const body = req.body;
   if (!registerSchema.validate(body).error) {
@@ -30,6 +32,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// Login user
 router.post("/login", async (req, res) => {
   const body = req.body;
   const login = await knex("Users").where("login", "=", body.login);

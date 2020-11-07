@@ -3,6 +3,7 @@ const router = express.Router();
 const knex = require("../../connection");
 const tweetSchema = require("../schemas/tweet");
 
+// List of tweets
 router.get("/", async (req, res) => {
   const tweets = await knex("Tweets")
     .join("Users", "Tweets.UserId", "=", "Users.UserId")
@@ -19,6 +20,7 @@ router.get("/", async (req, res) => {
   res.json(tweets);
 });
 
+// Individual tweet
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   const tweet = await knex("Tweets")
@@ -35,6 +37,7 @@ router.get("/:id", async (req, res) => {
   res.json(tweet);
 });
 
+// Tweets of individual user
 router.get("/user/:userid", async (req, res) => {
   const userid = req.params.userid;
   const tweet = await knex("Tweets")
@@ -52,6 +55,7 @@ router.get("/user/:userid", async (req, res) => {
   res.json(tweet);
 });
 
+// Create tweet
 router.post("/create", async (req, res) => {
   const body = req.body;
   const user = req.user;

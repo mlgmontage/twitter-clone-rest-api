@@ -1,5 +1,6 @@
 const Joi = require("joi");
 
+// Comment validator
 const schema = Joi.object({
   TweetId: Joi.required(),
   UserId: Joi.required(),
