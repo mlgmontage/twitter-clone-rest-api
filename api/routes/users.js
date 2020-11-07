@@ -12,8 +12,20 @@ router.post('/register', async (req, res) => {
   const body = req.body
   if(!registerSchema.validate(body).error) {
 
-    const inserted = await knex.insert([body]).into("Users")
-    res.json(inserted)
+    const login = await knex("Users").where("login", "=", body.login)
+
+    if(!login.length) {
+
+      const inserted = await knex.insert([body]).into("Users")
+
+      res.json({
+        message: "login created"
+      })
+    } else {
+      res.json({
+        message: "login already exists"
+      })
+    }
   } else {
     res.json(registerSchema.validate(body))
   }
