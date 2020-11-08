@@ -63,7 +63,17 @@ router.post("/create", async (req, res) => {
 
   if (!tweetSchema.validate(body).error) {
     const insertedId = await knex.insert([body]).into("Tweets");
-    const inserted = await knex("Tweets").where("TweetId", "=", insertedId[0]);
+    const inserted = await knex("Tweets")
+      .join("Users", "Tweets.UserId", "=", "Users.UserId")
+      .select(
+        "Tweets.TweetId",
+        "Tweets.Tweet",
+        "Users.UserId",
+        "Users.name",
+        "Users.lastname",
+        "Users.login"
+      )
+      .where("TweetId", "=", insertedId[0]);
 
     res.json(inserted);
   } else {
