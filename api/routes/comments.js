@@ -16,7 +16,7 @@ router.get("/:tweetid", async (req, res) => {
 router.post("/create", async (req, res) => {
   const body = req.body;
   body.UserId = req.user.UserId;
-  body.Date = Date.now();
+  body.Date = new Date().toISOString();
 
   if (!commentSchema.validate(body).error) {
     const commentId = await knex.insert([body]).into("Comments");
