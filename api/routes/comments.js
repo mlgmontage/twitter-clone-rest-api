@@ -18,7 +18,12 @@ router.post("/create", async (req, res) => {
   body.UserId = req.user.UserId;
 
   if (!commentSchema.validate(body).error) {
-    const comment = await knex.insert([body]).into("Comments");
+    const commentId = await knex.insert([body]).into("Comments");
+    const comment = await knex("Comments").where(
+      "CommentId",
+      "=",
+      commentId[0]
+    );
     res.json(comment);
   } else {
     res.status(400).json(commentSchema.validate(body).error.details[0]);
