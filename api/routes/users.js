@@ -24,12 +24,12 @@ router.post("/register", async (req, res) => {
         message: "login created",
       });
     } else {
-      res.json({
+      res.status(400).json({
         message: "login already exists",
       });
     }
   } else {
-    res.json(registerSchema.validate(body));
+    res.status(400).json(registerSchema.validate(body).error.details[0]);
   }
 });
 

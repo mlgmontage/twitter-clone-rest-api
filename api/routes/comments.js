@@ -21,7 +21,7 @@ router.post("/create", async (req, res) => {
     const comment = await knex.insert([body]).into("Comments");
     res.json(comment);
   } else {
-    res.json(commentSchema.validate(body));
+    res.status(400).json(commentSchema.validate(body).error.details[0]);
   }
 });
 

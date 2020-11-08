@@ -66,7 +66,7 @@ router.post("/create", async (req, res) => {
 
     res.json(inserted);
   } else {
-    res.json(tweetSchema.validate(body));
+    res.status(400).json(tweetSchema.validate(body).error.details[0]);
   }
 });
 
