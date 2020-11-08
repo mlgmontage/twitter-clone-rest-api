@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
     .select(
       "Tweets.TweetId",
       "Tweets.Tweet",
+      "Tweets.Date",
       "Users.name",
       "Users.lastname",
       "Users.login",
@@ -28,6 +29,7 @@ router.get("/:id", async (req, res) => {
     .select(
       "Tweets.TweetId",
       "Tweets.Tweet",
+      "Tweets.Date",
       "Users.name",
       "Users.lastname",
       "Users.login"
@@ -45,6 +47,7 @@ router.get("/user/:userid", async (req, res) => {
     .select(
       "Tweets.TweetId",
       "Tweets.Tweet",
+      "Tweets.Date",
       "Users.UserId",
       "Users.name",
       "Users.lastname",
@@ -60,6 +63,7 @@ router.post("/create", async (req, res) => {
   const body = req.body;
   const user = req.user;
   body.UserId = user.UserId;
+  body.Date = Date.now();
 
   if (!tweetSchema.validate(body).error) {
     const insertedId = await knex.insert([body]).into("Tweets");
@@ -68,6 +72,7 @@ router.post("/create", async (req, res) => {
       .select(
         "Tweets.TweetId",
         "Tweets.Tweet",
+        "Tweets.Date",
         "Users.UserId",
         "Users.name",
         "Users.lastname",
