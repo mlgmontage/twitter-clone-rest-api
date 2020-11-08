@@ -32,7 +32,8 @@ router.get("/:id", async (req, res) => {
       "Tweets.Date",
       "Users.name",
       "Users.lastname",
-      "Users.login"
+      "Users.login",
+      "Users.UserId"
     )
     .where("Tweets.TweetId", "=", id);
 
