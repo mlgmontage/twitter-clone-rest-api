@@ -53,7 +53,8 @@ router.get("/user/:userid", async (req, res) => {
       "Users.lastname",
       "Users.login"
     )
-    .where("Tweets.UserId", "=", userid);
+    .where("Tweets.UserId", "=", userid)
+    .orderBy("Tweets.TweetId", "desc");
 
   res.json(tweet);
 });
