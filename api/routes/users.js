@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const knex = require("../../connection");
 const registerSchema = require("../schemas/register");
+const loginSchema = require("../schemas/login");
 
 // List of users
 router.get("/", async (req, res) => {
@@ -35,6 +36,14 @@ router.post("/register", async (req, res) => {
 // Login user
 router.post("/login", async (req, res) => {
   const body = req.body;
+
+  if (loginSchema.validate(body).error) {
+    res.status(401).json({
+      message: "Auth error",
+    });
+    return;
+  }
+
   const login = await knex("Users").where("login", "=", body.login);
 
   if (login.length > 0 && body.password == login[0].password) {
@@ -44,7 +53,7 @@ router.post("/login", async (req, res) => {
 
     res.json({ token });
   } else {
-    res.json({
+    res.status(401).json({
       message: "Auth error",
     });
   }
