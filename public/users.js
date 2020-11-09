@@ -1,5 +1,5 @@
 const userid = location.hash.slice(1);
-const host = `http://${window.location.host}/`;
+const host = `https://${window.location.host}/`;
 const tweetsBlock = document.querySelector("#tweetsBlock");
 const token = localStorage.getItem("token");
 

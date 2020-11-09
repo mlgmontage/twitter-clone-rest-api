@@ -1,4 +1,4 @@
-const host = `http://${window.location.host}/`;
+const host = `https://${window.location.host}/`;
 
 const registerElm = document.querySelector("form");
 const alertBox = document.querySelector("#alert-box");

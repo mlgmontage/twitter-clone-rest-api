@@ -1,5 +1,5 @@
 const tweetsBlock = document.querySelector("#tweetsBlock");
-const host = `http://${window.location.host}/`;
+const host = `https://${window.location.host}/`;
 const token = localStorage.getItem("token");
 
 // Redirecting unauthorized users

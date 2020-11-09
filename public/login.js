@@ -2,7 +2,7 @@
 
 const loginFormElm = document.querySelector("#loginForm");
 const submit = document.querySelector("#submit");
-const host = `http://${window.location.host}/`;
+const host = `https://${window.location.host}/`;
 const loginMessage = document.querySelector("#loginMessage");
 
 if (localStorage.getItem("token")) {
