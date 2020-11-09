@@ -14,6 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
+// Serving static files
+app.use(express.static("./public"));
+
 // Routes
 app.use("/api/routes/users", require("./api/routes/users"));
 
