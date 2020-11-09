@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+      integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK"
+      crossorigin="anonymous"
+    />
+    <title>Twitter clone | Vanilla</title>
+  </head>
+  <body>
+    <!-- Nav -->
+    <div class="bg-dark">
+      <div class="container">
+        <div class="nav">
+          <div class="nav-item">
+            <a href="./index.html" class="nav-link text-muted">Home</a>
+          </div>
+          <div class="nav-item">
+            <a href="./tweets.html" class="nav-link text-muted">Tweets</a>
+          </div>
+          <div
+            id="logout"
+            class="nav-item nav-link text-muted"
+            style="cursor: pointer"
+          >
+            Logout
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Nav -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 text-center py-5">
+          <div class="display-1">Twitter clone</div>
+          <div class="small text-muted">by mlgmontage</div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="col-md-4 py-5">
+          <div id="loginMessage"></div>
+          <form action="" id="loginForm">
+            <div class="mb-3">
+              <label for="login" class="form-label">Write you login</label>
+              <input type="text" name="login" class="form-control" id="login" />
+              <div class="form-text">Write your login</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label"
+                >Write you password</label
+              >
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                id="password"
+              />
+              <div class="form-text">Write your password</div>
+            </div>
+
+            <button class="btn btn-secondary mr-2" id="submit">Login</button> |
+            <a href="./register.html" class="mx-2">Register</a>
+          </form>
+        </div>
+        <!-- End of Login Form -->
+      </div>
+    </div>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+      integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+    <script src="./login.js"></script>
+    <script src="./logout.js"></script>
+  </body>
+</html>
