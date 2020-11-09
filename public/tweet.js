@@ -1,5 +1,5 @@
 const tweetId = location.hash.slice(1);
-const host = `http://localhost:8080/`;
+const host = `http://${window.location.host}/`;
 const commentsBlock = document.querySelector("#commentsBlock");
 const tweetIndividual = document.querySelector("#tweetIndividual");
 const token = localStorage.getItem("token");
